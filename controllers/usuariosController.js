@@ -54,9 +54,9 @@ exports.nuevaCuenta = async (req, res) => {
         req.flash('correcto', 'Se envió un mensaje a tu correo para confirmar tu cuenta');
         res.redirect('/iniciar-sesion');
         
-    } catch (err) {
+    } catch (error) {
         // console.log(err);
-        req.flash('error', err.errors.map(e => e.message)); //paso 4 (el paso 1, 2 y 3 están en el index)
+        req.flash('error', err.errors.map(error => error.message)); //paso 4 (el paso 1, 2 y 3 están en el index)
         res.render('crearCuenta', {
             mensajes : req.flash(),            
             nombrePag: 'Crear Cuenta',
