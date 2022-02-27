@@ -55,7 +55,7 @@ exports.nuevaCuenta = async (req, res) => {
         res.redirect('/iniciar-sesion');
         
     } catch (error) {
-        Window.alert(error);
+        // console.log(error);
         req.flash('error', error.errors.map(error => error.message)); //paso 4 (el paso 1, 2 y 3 están en el index)
         res.render('crearCuenta', {
             mensajes : req.flash(),            
