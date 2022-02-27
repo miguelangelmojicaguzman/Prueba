@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        include partials/header
+    body
+        header.barra
+            h1 WXSoporte #{year}                
+            a(href="/cerrar-sesion") Cerrar Sesión
+
+        main.contenedor
+            aside.contenedor-proyectos
+                .panel.crear-proyecto
+                    a(href="/nuevo-soporte" class="boton") Nuevo Proyecto
+                        span +
+                .panel.lista-proyectos
+                    h2 Soportes
+                    ul#proyectos.proyectos
+                        if(soportes.length)
+                            each soporte in soportes
+                                li
+                                    a(href=`/soportes/${soporte.url}`)= soporte.nombre
+                         
+
+            block contenido
+
+            //- pre= vardump(soportes)
+
+            script(src="/dist/bundle.js")        

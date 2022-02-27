@@ -1,0 +1,39 @@
+extends layout
+
+block contenido
+    .contenido-principal
+        h1 #{nombrePag} - #{soporte.nombre}
+
+        form.agregar-tarea(action=`/soportes/${soporte.url}` method="POST")
+            .campo
+                label(for="tarea") Avance:
+                input.nombre-tarea(type="text", name="avance" placeholder="Avance del soporte")
+            .campo.enviar
+                input.boton.nueva-tarea(type="submit" value="Agregar")
+
+        .listado-pendientes
+            ul
+              if avances.length
+                each avance in avances
+                    li.tarea(data-avance=avance.id)
+                        p= avance.avance
+                        .acciones
+                            if avance.estado
+                                i.far.fa-check-circle.completo
+                            else
+                                i.far.fa-check-circle
+                            i.fas.fa-trash
+              else
+                p Aún no hay avances para este soporte
+
+        //- pre= vardump(soporte)        
+
+        //- avance del soporte
+        .avance 
+            h2 Avance del Soporte
+            #barra-avance.barra-avance
+                #porcentaje.porcentaje
+
+        .contenedor-acciones
+            a(href=`/soportes/editar/${soporte.id}`, class="boton") Editar Soporte
+            button#eliminar-soporte(data-soporte-url=soporte.url type="button" class="boton eliminar") Eliminar Soporte
