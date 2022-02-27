@@ -56,7 +56,7 @@ exports.nuevaCuenta = async (req, res) => {
         
     } catch (error) {
         // console.log(err);
-        req.flash('error', err.errors.map(error => error.message)); //paso 4 (el paso 1, 2 y 3 están en el index)
+        req.flash('error', error.errors.map(error => error.message)); //paso 4 (el paso 1, 2 y 3 están en el index)
         res.render('crearCuenta', {
             mensajes : req.flash(),            
             nombrePag: 'Crear Cuenta',
